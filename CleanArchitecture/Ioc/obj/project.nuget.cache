@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "lNvGbjHAqWJzvN/RrDvNby0hU4gH5wbN9YLXsb40ZfzCnRNKZEA7px1I6OXDEd8hxoNrFnNUUfhIstRMjEuADA==",
+  "dgSpecHash": "GDrq9wb6hE+kgFVWa2WwrkzNaMus5cFdI3Fbzik++k/wKPAwtn9Lqbcj9lY5caTW0MJua0H5yWYctpLHAIyNDw==",
   "success": true,
   "projectFilePath": "/Users/macbook/Projects/CleanArchitectureTemplate/CleanArchitecture/Ioc/Ioc.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/macbook/.nuget/packages/microsoft.extensions.configuration.abstractions/7.0.0/microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "/Users/macbook/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "/Users/macbook/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

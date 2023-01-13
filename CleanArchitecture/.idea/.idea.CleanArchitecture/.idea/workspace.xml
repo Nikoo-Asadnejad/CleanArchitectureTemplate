@@ -6,10 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aed86a6-d3db-45e6-8669-67f636b0035f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CleanArchitecture/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CleanArchitecture.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CleanArchitecture.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ioc/Ioc.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Ioc/Ioc.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,6 +90,7 @@
       <workItem from="1672583048929" duration="45000" />
       <workItem from="1672583119146" duration="1417000" />
       <workItem from="1672585150548" duration="203000" />
+      <workItem from="1672585360567" duration="27000" />
     </task>
     <servers />
   </component>

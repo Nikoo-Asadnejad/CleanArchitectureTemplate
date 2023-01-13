@@ -1028,6 +1028,16 @@
           }
         }
       },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -3182,6 +3192,11 @@
         "version.txt"
       ]
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
@@ -3190,6 +3205,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Application >= 1.0.0",
       "Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.2",
       "Microsoft.EntityFrameworkCore.Abstractions >= 7.0.2",
@@ -3222,6 +3238,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "/Users/macbook/Projects/CleanArchitectureTemplate/CleanArchitecture/Application/Application.csproj": {
+              "projectPath": "/Users/macbook/Projects/CleanArchitectureTemplate/CleanArchitecture/Application/Application.csproj"
+            },
             "/Users/macbook/Projects/CleanArchitectureTemplate/CleanArchitecture/Domain/Domain.csproj": {
               "projectPath": "/Users/macbook/Projects/CleanArchitectureTemplate/CleanArchitecture/Domain/Domain.csproj"
             }

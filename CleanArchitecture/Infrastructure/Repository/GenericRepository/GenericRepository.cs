@@ -1,10 +1,12 @@
 using System.Linq.Expressions;
+using Domain.Entities.BaseEntity;
 using Domain.Enums;
+using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository.GenericRepository;
 
-public class GenericRepository<T> where T : class
+public class GenericRepository<T> : IGenericRepository<T> where T : BaseModel
 {
     private readonly DbContext _context;
     private readonly DbSet<T> _model;

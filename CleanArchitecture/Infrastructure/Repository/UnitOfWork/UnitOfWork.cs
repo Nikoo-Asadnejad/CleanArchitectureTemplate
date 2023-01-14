@@ -13,4 +13,7 @@ public class UnitOfWork : IUnitOfWork
 
     public async Task SaveAsync()
         => await _context.SaveChangesAsync();
+
+    public async Task DisposeAsync()
+        => await _context.DisposeAsync();
 }

@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Infrastructure.Context;
 
-public class AppContext 
+public class AppContext : DbContext
 {
     
 }

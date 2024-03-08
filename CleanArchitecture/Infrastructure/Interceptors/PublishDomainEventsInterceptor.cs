@@ -1,4 +1,4 @@
-using Domain.Entities.BaseEntity;
+using Domain.Entities.Base;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;

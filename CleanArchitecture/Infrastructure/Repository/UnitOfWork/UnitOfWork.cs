@@ -1,8 +1,8 @@
-using GenericRepository.Application.Interfaces.UnitOfWork;
+using Application.Repository.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace GenericRepository.Infrastructure.Repository.UnitOfWork;
+namespace Infrastructure.Repository.UnitOfWork;
 
 public class UnitOfWork :  IUnitOfWork
 {

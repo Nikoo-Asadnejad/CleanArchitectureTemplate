@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace GenericRepository.Application.Interfaces.UnitOfWork;
+namespace Application.Repository.UnitOfWork;
 
 public interface IUnitOfWork 
 { 

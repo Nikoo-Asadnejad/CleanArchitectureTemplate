@@ -1,9 +1,9 @@
 using System.Text.Json;
-using Domain.Entities.BaseEntity;
+using Domain.Entities.Base;
 
 namespace Domain.Entities;
 
-public class OutBoxMessage : BaseEntity.BaseEntity
+public class OutBoxMessage : BaseEntity
 {
     public OutBoxMessage(string type , string content)
     {

@@ -1,8 +1,9 @@
 using System.Text.Json;
+using Domain.Entities.Base;
 
 namespace Domain.Entities;
 
-public class ChangeHistory : BaseEntity.BaseEntity
+public class ChangeHistory : BaseEntity
 {
     public string OldValue { get; private set; }
     
@@ -12,7 +13,7 @@ public class ChangeHistory : BaseEntity.BaseEntity
     
     public string RelatedEntityType { get; private set; }
 
-    public void LogHistory(BaseEntity.BaseEntity oldEntity , BaseEntity.BaseEntity newEntity)
+    public void LogHistory(BaseEntity oldEntity , BaseEntity newEntity)
     {
         OldValue = JsonSerializer.Serialize(oldEntity);
         NewValue = JsonSerializer.Serialize(oldEntity);

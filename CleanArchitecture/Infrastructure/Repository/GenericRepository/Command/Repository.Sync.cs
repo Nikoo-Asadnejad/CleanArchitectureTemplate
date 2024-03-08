@@ -1,8 +1,8 @@
-using Domain.Entities.BaseEntity;
+using Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace GenericRepository.Infrastructure.Repository.GenericRepository.Command;
+namespace Infrastructure.Repository.GenericRepository.Command;
 
 public sealed partial class Repository<T> where T : BaseEntity
 {

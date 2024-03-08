@@ -1,10 +1,10 @@
 using System.Linq.Expressions;
+using Application.Repository.GenericRepository.Query;
 using Domain.Enums;
-using GenericRepository.Application.Interfaces.GenericRepository.Query;
-using GenericRepository.Infrastructure.Context;
+using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace GenericRepository.Infrastructure.Repository.GenericRepository.Query;
+namespace Infrastructure.Repository.GenericRepository.Query;
 
 public sealed partial class QueryGenericRepository<T> : IQueryGenericRepository<T>
 {

@@ -1,10 +1,10 @@
 using System.Linq.Expressions;
-using Domain.Entities.BaseEntity;
+using Application.Repository.GenericRepository.Query;
+using Domain.Entities.Base;
 using Domain.Enums;
-using GenericRepository.Application.Interfaces.GenericRepository.Query;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace GenericRepository.Infrastructure.Repository.GenericRepository.Query;
+namespace Infrastructure.Repository.GenericRepository.Query;
 
 public sealed class CacheRepository<T> : IQueryGenericRepository<T> where T : BaseEntity
 {

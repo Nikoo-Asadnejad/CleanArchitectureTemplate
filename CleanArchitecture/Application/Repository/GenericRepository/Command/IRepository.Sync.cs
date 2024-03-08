@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace GenericRepository.Application.Interfaces.GenericRepository.Command;
+namespace Application.Repository.GenericRepository.Command;
 
 public partial interface IRepository<T>
 {

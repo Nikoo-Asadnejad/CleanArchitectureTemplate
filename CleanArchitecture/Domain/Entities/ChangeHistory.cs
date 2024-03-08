@@ -1,5 +1,4 @@
 using System.Text.Json;
-using Domain.Entities.BaseEntity;
 
 namespace Domain.Entities;
 

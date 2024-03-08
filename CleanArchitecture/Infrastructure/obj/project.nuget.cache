@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CCr3FZKCgRUbO2xUoxfBwfIVSPoNQX3svvEGGgD3gF6G1H7dfsFtq3Jff5RC5x9B8YB57xMSRtv+DYgUHWaX6w==",
+  "dgSpecHash": "pEI3pMEol7JtVISPr0hFoTiSeQ/s2GwB5moya6zW9Qc3hbwgvp4EZNTMIosWHDKXn1N3veoMOFexYs2PijWuBQ==",
   "success": true,
   "projectFilePath": "/Users/macbook/Projects/CleanArchitectureTemplate/CleanArchitecture/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [

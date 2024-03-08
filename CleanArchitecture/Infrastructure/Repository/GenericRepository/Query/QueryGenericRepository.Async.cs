@@ -1,109 +1,94 @@
 using System.Linq.Expressions;
-using Domain.Entities.BaseEntity;
 using Domain.Enums;
-using Infrastructure.Interfaces;
+using GenericRepository.Application.Interfaces.GenericRepository.Query;
+using GenericRepository.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repository.GenericRepository;
+namespace GenericRepository.Infrastructure.Repository.GenericRepository.Query;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+public sealed partial class QueryGenericRepository<T> : IQueryGenericRepository<T>
 {
-    private readonly DbContext _context;
+    private readonly QueryContext _context;
     private readonly DbSet<T> _model;
 
-    public GenericRepository(DbContext context)
+    public QueryGenericRepository(QueryContext context)
     {
         this._context = context;
         _model = _context.Set<T>();
     }
 
-    public async Task AddAsync(T model)
-    {
-        await _model.AddAsync(model);
-    }
-
-    public async Task AddRangeAsync(IEnumerable<T> models)
-    {
-        await _model.AddRangeAsync(models);
-    }
-
-    public async Task<bool> AnyAsync(Expression<Func<T, bool>> query)
-        => await _model.AnyAsync(query);
-
-    public async Task DeleteAsync(long id)
-    {
-        T? model = _context.FindAsync<T>(id).Result;
-        if (model != null) _model.Remove(model);
-    }
-
-    public async Task DeleteRangeAsync(IEnumerable<T> models)
-    {
-        _model.RemoveRange(models);
-    }
-
-
-    public async Task<long> GetCountAsync(Expression<Func<T, bool>> query)
+    public async Task<long> GetCountAsync(Expression<Func<T, bool>> query = null)
         => await _model.CountAsync(query);
 
-
     /// <summary>
-    /// 
+    ///  Gets list of model and apply selector on it when the condition is true
     /// </summary>
     /// <param name="query">Get where query</param>
     /// <param name="orderBy">Order by orderBy expression</param>
-    /// <param name="orderType">Desc | Asc </param>
+    /// <param name="orderByType">Desc | Asc </param>
     /// <param name="skip">skip</param>
     /// <param name="take">take</param>
     /// <returns></returns>
-    public async Task<List<TResult>> GetListAsync<TResult>(Expression<Func<T, bool>> query,
+    public async Task<IReadOnlyList<TResult>> GetListAsync<TResult>(Expression<Func<T, bool>>? query,
         Func<T, TResult> selector,
         Func<T, object>? orderBy = null,
-        OrderType? orderType = OrderType.Asc,
-        List<string>? includes = default,
+        OrderType? orderType = null,
+        List<string>? includes = null,
         int? skip = null,
         int? take = null,
         bool? distinct = null,
         bool asTracking = false)
     {
-        List<TResult> result;
-        var models = _model.AsQueryable();
+        IReadOnlyList<TResult> result;
+        IQueryable<T> models = _model.AsQueryable();
 
         if (!asTracking)
             models.AsNoTrackingWithIdentityResolution();
 
-        if (includes != null && includes.Count() > 0)
+        if (includes != null && includes.Any())
             includes.ForEach(includeProperty => models.Include(includeProperty));
-
-
+        
         models = models.Where(query);
 
-        if (skip != null)
+        if (skip is not null)
             models = models.Skip((int)skip);
 
-        if (take != null)
+        if (take is not null)
             models = models.Take((int)take);
 
-        if (orderBy != null && orderType == OrderType.Asc)
+        if (orderBy is not null && orderType is OrderType.Asc)
             models = models.OrderBy(orderBy).AsQueryable();
 
-        if (orderBy != null && orderType == OrderType.Desc)
+        if (orderBy is not null && orderType is OrderType.Desc)
             models = models.OrderByDescending(orderBy).AsQueryable();
 
-        if (orderBy != null && orderType == null)
+        if (orderBy is not null && orderType is null)
             models = models.OrderBy(orderBy).AsQueryable();
 
-        if (distinct != null)
+        if (distinct is not null)
             models.Distinct();
 
-        result = models.Select(selector).ToList();
-
+        result = models.Select(selector)
+                        .ToList()
+                        .AsReadOnly();
         return result;
     }
 
-
-    public async Task<List<T>> GetListAsync(Expression<Func<T, bool>> query,
+    /// <summary>
+    /// Get list of model where the condition is true
+    /// </summary>
+    /// <param name="query"></param>
+    /// <param name="orderBy"></param>
+    /// <param name="orderType"></param>
+    /// <param name="includes"></param>
+    /// <param name="skip"></param>
+    /// <param name="take"></param>
+    /// <param name="distinct"></param>
+    /// <param name="asTracking"></param>
+    /// <returns></returns>
+    public async Task<IReadOnlyList<T>> GetListAsync(Expression<Func<T, bool>>? query = null,
         Func<T, object>? orderBy = null,
-        OrderType? orderType = OrderType.Asc,
+        OrderType? orderType = null,
         List<string>? includes = null,
         int? skip = 0,
         int? take = null,
@@ -115,78 +100,79 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         if (!asTracking)
             models.AsNoTrackingWithIdentityResolution();
 
-        if (includes != null && includes.Count() > 0)
+        if (includes is not null && includes.Count() > 0)
             includes.ForEach(includeProperty => models.Include(includeProperty));
 
-        if (query != null)
+        if (query is not null)
             models = models.Where(query);
 
-        if (skip != null)
+        if (skip is not null)
             models = models.Skip((int)skip);
 
-        if (take != null)
+        if (take is not null)
             models = models.Take((int)take);
 
-        if (orderBy != null && orderType == OrderType.Asc)
+        if (orderBy is not null && orderType is OrderType.Asc)
             models = models.OrderBy(orderBy).AsQueryable();
 
-        if (orderBy != null && orderType == OrderType.Desc)
+        if (orderBy is not null && orderType is OrderType.Desc)
             models = models.OrderByDescending(orderBy).AsQueryable();
 
-        if (orderBy != null && orderType == null)
+        if (orderBy is not null && orderType is null)
             models = models.OrderBy(orderBy).AsQueryable();
 
-        if (distinct != null)
+        if (distinct is not null)
             models.Distinct();
 
-        return models.ToList();
+        return models.ToList()
+                     .AsReadOnly();
     }
 
-
-    public async Task<List<TResult>> GetAllAsync<TResult>(Func<T, TResult> selector,
+    public async Task<IReadOnlyList<TResult>> GetAllAsync<TResult>(Func<T, TResult> selector,
         Func<T, object>? orderBy = null,
-        OrderType? orderType = OrderType.Asc,
+        OrderType? orderType = null,
         List<string>? includes = null,
         int? skip = null,
         int? take = null,
         bool? distinct = null,
         bool asTracking = false)
     {
-        List<TResult> result;
-        var models = _model.AsQueryable();
+        IReadOnlyList<TResult> result;
+        IQueryable<T> models = _model.AsQueryable();
 
         if (!asTracking)
             models.AsNoTrackingWithIdentityResolution();
 
-        if (includes != null && includes.Count() > 0)
+        if (includes is not null && includes.Any())
             includes.ForEach(includeProperty => models.Include(includeProperty));
 
-        if (skip != null)
+        if (skip is not null)
             models = models.Skip((int)skip);
 
-        if (take != null)
+        if (take is not null)
             models = models.Take((int)take);
 
-        if (orderBy != null && orderType == OrderType.Asc)
+        if (orderBy is not null && orderType is OrderType.Asc)
             models = models.OrderBy(orderBy).AsQueryable();
 
-        if (orderBy != null && orderType == OrderType.Desc)
+        if (orderBy is not null && orderType is OrderType.Desc)
             models = models.OrderByDescending(orderBy).AsQueryable();
 
-        if (orderBy != null && orderType == null)
+        if (orderBy is not null && orderType is null)
             models = models.OrderBy(orderBy).AsQueryable();
 
-        if (distinct != null)
+        if (distinct is not null)
             models.Distinct();
 
-        result = models.Select(selector).ToList();
-
+        result = models.Select(selector)
+                        .ToList()
+                        .AsReadOnly();
         return result;
     }
 
-    public async Task<List<T>> GetAllAsync(
+    public async Task<IReadOnlyList<T>> GetAllAsync(
         Func<T, object>? orderBy = null,
-        OrderType? orderType = OrderType.Asc,
+        OrderType? orderType = null,
         List<string>? includes = null,
         int? skip = 0,
         int? take = null,
@@ -194,8 +180,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         bool asTracking = false)
         => await GetListAsync(null, orderBy, orderType, includes, skip, take, distinct, asTracking);
 
+    public async Task<IQueryable<T>> GetQueryableAsync()
+        => _model.AsQueryable();
 
-    public async Task<TResult> GetSingleAsync<TResult>(Expression<Func<T, bool>> query,
+    public async Task<TResult> GetSingleAsync<TResult>(Expression<Func<T, bool>>? query,
         Func<T, TResult> selector,
         List<string>? includes = null,
         bool asTracking = false)
@@ -207,48 +195,35 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         if (!asTracking)
             model.AsNoTrackingWithIdentityResolution();
 
-        if (includes != null && includes.Count() > 0)
+        if (includes is not null && includes.Any())
             includes.ForEach(includeProperty => model.Include(includeProperty));
 
-
         model = model.Where(query);
-
         result = model.Select(selector).FirstOrDefault();
-
         return result;
     }
 
-    public async Task<T> GetSingleAsync(Expression<Func<T, bool>> query,
+    public async Task<T> GetSingleAsync(Expression<Func<T, bool>>? query,
         List<string>? includes = null,
         bool asTracking = false)
     {
         T result;
-        var model = _model.AsQueryable();
+        IQueryable<T> model = _model.AsQueryable();
 
         if (!asTracking)
             model.AsNoTrackingWithIdentityResolution();
 
-        if (includes != null && includes.Count() > 0)
+        if (includes is not null && includes.Any())
             includes.ForEach(includeProperty => model.Include(includeProperty));
 
         model = model.Where(query);
-
         result = await model.FirstOrDefaultAsync();
-
         return result;
     }
-
 
     public async Task<T> FindAsync(long id)
         => await _model.FindAsync(id);
 
-    public async Task UpdateAsync(T model)
-    {
-        _model.Update(model);
-    }
-
-    public async Task UpdateRangeAsync(IEnumerable<T> models)
-    {
-        _model.UpdateRange(models);
-    }
+    public async Task<bool> AnyAsync(Expression<Func<T, bool>> query)
+        => await _model.AnyAsync(query);
 }

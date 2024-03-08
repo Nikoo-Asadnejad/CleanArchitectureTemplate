@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository.GenericRepository;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseModel
+public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
     private readonly DbContext _context;
     private readonly DbSet<T> _model;

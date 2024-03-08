@@ -1,4 +1,4 @@
-namespace Domain.Entities.BaseEntity;s
+namespace Domain.Entities.BaseEntity;
 
 public abstract class BaseEntity : IEquatable<BaseEntity>
 {

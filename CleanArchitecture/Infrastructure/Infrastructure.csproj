@@ -21,4 +21,8 @@
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0-preview.1.24080.9" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Data\" />
+    </ItemGroup>
+
 </Project>

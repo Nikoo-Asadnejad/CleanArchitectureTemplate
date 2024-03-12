@@ -1274,6 +1274,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Domain": "1.0.0",
+          "MediatR": "12.2.0",
           "Microsoft.EntityFrameworkCore": "7.0.2"
         },
         "compile": {

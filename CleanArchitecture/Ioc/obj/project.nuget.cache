@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PkWYgPEBaMWM1Zdzd38wghglrTHIbixMLbUBcjQ620M2X2aYfF9v1ldf38ASaNUMvlawWmsZRQvscTAtM06kYA==",
+  "dgSpecHash": "6FVFxEIfO8iKBbtATldzWYgDCJpqMwohqpwvlk7Hwd6tXIXOmz6k0aUUzI4DUlSrMyUvsqsvO7ADUcDKtsFyqg==",
   "success": false,
   "projectFilePath": "/Users/macbook/Projects/CleanArchitectureTemplate/CleanArchitecture/Ioc/Ioc.csproj",
   "expectedPackageFiles": [
@@ -83,7 +83,7 @@
     {
       "code": "NU1605",
       "level": "Error",
-      "message": "Detected package downgrade: Microsoft.Extensions.DependencyInjection.Abstractions from 8.0.0 to 7.0.0. Reference the package directly from the project to select a different version. \n Ioc -> Infrastructure -> MediatR 12.2.0 -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 8.0.0) \n Ioc -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 7.0.0)",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.Extensions.DependencyInjection.Abstractions from 8.0.0 to 7.0.0. Reference the package directly from the project to select a different version. \n Ioc -> Application -> MediatR 12.2.0 -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 8.0.0) \n Ioc -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 7.0.0)",
       "libraryId": "Microsoft.Extensions.DependencyInjection.Abstractions",
       "targetGraphs": [
         "net7.0"
@@ -92,7 +92,16 @@
     {
       "code": "NU1605",
       "level": "Error",
-      "message": "Detected package downgrade: Microsoft.Extensions.Configuration.Abstractions from 9.0.0-preview.1.24080.9 to 7.0.0. Reference the package directly from the project to select a different version. \n Ioc -> Infrastructure -> Microsoft.Extensions.Hosting.Abstractions 9.0.0-preview.1.24080.9 -> Microsoft.Extensions.Configuration.Abstractions (>= 9.0.0-preview.1.24080.9) \n Ioc -> Microsoft.Extensions.Configuration.Abstractions (>= 7.0.0)",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.Extensions.DependencyInjection.Abstractions from 8.0.0 to 7.0.0. Reference the package directly from the project to select a different version. \n Ioc -> Infrastructure -> MediatR 12.2.0 -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 8.0.0) \n Ioc -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 7.0.0)",
+      "libraryId": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.Extensions.Configuration.Abstractions from 9.0.0-preview.1.24080.9 to 7.0.0. Reference the package directly from the project to select a different version. \n Ioc -> Infrastructure -> Microsoft.Extensions.Hosting.Abstractions 9.0.0-preview.1.24080.9 -> Microsoft.Extensions.Configuration.Abstractions (>= 9.0.0-preview.1.24080.9) \n Ioc -> Microsoft.Extensions.Configuration.Abstractions (>= 7.0.0)",
       "libraryId": "Microsoft.Extensions.Configuration.Abstractions",
       "targetGraphs": [
         "net7.0"
@@ -101,7 +110,7 @@
     {
       "code": "NU1605",
       "level": "Error",
-      "message": "Detected package downgrade: Microsoft.Extensions.DependencyInjection.Abstractions from 9.0.0-preview.1.24080.9 to 7.0.0. Reference the package directly from the project to select a different version. \n Ioc -> Infrastructure -> Microsoft.Extensions.Hosting.Abstractions 9.0.0-preview.1.24080.9 -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 9.0.0-preview.1.24080.9) \n Ioc -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 7.0.0)",
+      "message": "Warning As Error: Detected package downgrade: Microsoft.Extensions.DependencyInjection.Abstractions from 9.0.0-preview.1.24080.9 to 7.0.0. Reference the package directly from the project to select a different version. \n Ioc -> Infrastructure -> Microsoft.Extensions.Hosting.Abstractions 9.0.0-preview.1.24080.9 -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 9.0.0-preview.1.24080.9) \n Ioc -> Microsoft.Extensions.DependencyInjection.Abstractions (>= 7.0.0)",
       "libraryId": "Microsoft.Extensions.DependencyInjection.Abstractions",
       "targetGraphs": [
         "net7.0"
